@@ -12,7 +12,7 @@ type LinkStack struct {
 }
 
 type LinkNode struct {
-	Next *LinkNode
+	Next  *LinkNode
 	Value string
 }
 
@@ -49,7 +49,7 @@ func (stack *LinkStack) Push(v string) {
 func (stack *LinkStack) Pop() string {
 	stack.lock.Lock()
 	defer stack.lock.Unlock()
-	
+
 	if stack.size == 0 {
 		panic("empty")
 	}
@@ -74,23 +74,23 @@ func (stack *LinkStack) Peek() string {
 
 // 栈大小
 func (stack *LinkStack) Size() int {
-    return stack.size
+	return stack.size
 }
 
 // 栈是否为空
 func (stack *LinkStack) IsEmpty() bool {
-    return stack.size == 0
+	return stack.size == 0
 }
 
 func main() {
-    linkStack := new(LinkStack)
-    linkStack.Push("cat")
-    linkStack.Push("dog")
-    linkStack.Push("hen")
-    fmt.Println("size:", linkStack.Size())
-    fmt.Println("pop:", linkStack.Pop())
-    fmt.Println("pop:", linkStack.Pop())
-    fmt.Println("size:", linkStack.Size())
-    linkStack.Push("drag")
-    fmt.Println("pop:", linkStack.Pop())
+	linkStack := new(LinkStack)
+	linkStack.Push("cat")
+	linkStack.Push("dog")
+	linkStack.Push("hen")
+	fmt.Println("size:", linkStack.Size())
+	fmt.Println("pop:", linkStack.Pop())
+	fmt.Println("pop:", linkStack.Pop())
+	fmt.Println("size:", linkStack.Size())
+	linkStack.Push("drag")
+	fmt.Println("pop:", linkStack.Pop())
 }
