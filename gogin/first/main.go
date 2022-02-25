@@ -1,6 +1,8 @@
 package main
 
 import (
+	"log"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -9,5 +11,7 @@ func main() {
 	r.GET("/", func(c *gin.Context) {
 		c.String(200, "Hello go")
 	})
-	r.Run(":9000")
+	if err := r.Run(":9000"); err != nil {
+		log.Fatal(err.Error())
+	}
 }
