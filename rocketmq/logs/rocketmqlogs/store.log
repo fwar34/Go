@@ -1,0 +1,14 @@
+2022-08-12 10:41:27 INFO AllocateMappedFileService - AllocateMappedFileService service started
+2022-08-12 10:41:27 INFO main - last shutdown normally
+2022-08-12 10:41:27 INFO main - load commit log OK
+2022-08-12 10:41:27 INFO main - load logics queue all over, OK
+2022-08-12 10:41:27 INFO main - store checkpoint file not exists, /root/store/checkpoint
+2022-08-12 10:41:27 INFO main - load over, and the max phy offset = 0
+2022-08-12 10:41:28 INFO FlushConsumeQueueService - FlushConsumeQueueService service started
+2022-08-12 10:41:28 INFO FlushRealTimeService - FlushRealTimeService service started
+2022-08-12 10:41:28 INFO StoreStatsService - StoreStatsService service started
+2022-08-12 10:41:28 INFO ReputMessageService - ReputMessageService service started
+2022-08-12 10:41:28 INFO AcceptSocketService - AcceptSocketService service started
+2022-08-12 10:41:28 INFO GroupTransferService - GroupTransferService service started
+2022-08-12 10:41:28 INFO main - /root/store/abort create OK
+2022-08-12 10:41:28 INFO HAClient - HAClient service started
