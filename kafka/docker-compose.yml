@@ -1,5 +1,18 @@
 # https://hub.docker.com/r/bitnami/kafka
 # https://github.com/bitnami/containers/blob/main/bitnami/kafka/docker-compose-cluster.yml
+
+# 进入 kafka 容器创建 topic
+# root@kafka1:/# /opt/bitnami/kafka/bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --topic mytopic --partitions 3 --replication-factor 3
+# Created topic "mytopic".
+#
+# root@kafka1:/# /opt/bitnami/kafka/bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic mytopic
+# Topic:mytopic   PartitionCount:3        ReplicationFactor:3     Configs:
+#  Topic: mytopic  Partition: 0    Leader: 2       Replicas: 2,3,1 Isr: 2,3,1
+#  Topic: mytopic  Partition: 1    Leader: 3       Replicas: 3,1,2 Isr: 3,1,2
+#  Topic: mytopic  Partition: 2    Leader: 1       Replicas: 1,2,3 Isr: 1,2,3
+
+# 监听消息
+# /opt/bitnami/kafka/bin/kafka-console-consumer.sh --bootstrap-server kafka-0:9092 --topic my-topic
 version: "2"
 
 services:
