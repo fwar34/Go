@@ -1,3 +1,5 @@
+# https://hub.docker.com/r/bitnami/kafka
+# https://github.com/bitnami/containers/blob/main/bitnami/kafka/docker-compose-cluster.yml
 version: "2"
 
 services:
