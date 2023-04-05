@@ -20,18 +20,18 @@ func main() {
 }
 
 func CreateTopic(topicName string) {
-	testAdmin, err := admin.NewAdmin(admin.WithResolver(primitive.NewPassthroughResolver([]string{"192.168.32.228:9876"})))
+	testAdmin, err := admin.NewAdmin(admin.WithResolver(primitive.NewPassthroughResolver([]string{"192.168.125.13:9876"})))
 	if err != nil {
 		fmt.Printf("connection error: %s\n", err.Error())
 	}
-	err = testAdmin.CreateTopic(context.Background(), admin.WithTopicCreate(topicName), admin.WithBrokerAddrCreate("192.168.32.228:10909"))
+	err = testAdmin.CreateTopic(context.Background(), admin.WithTopicCreate(topicName), admin.WithBrokerAddrCreate("192.168.125.13:10909"))
 	if err != nil {
 		fmt.Printf("CreateTopic error: %s\n", err.Error())
 	}
 }
 
 func Producer() {
-	p, _ := rocketmq.NewProducer(producer.WithNameServer([]string{"192.168.32.228:9876"}), producer.WithRetry(2), producer.WithGroupName("ProducerGroupName"))
+	p, _ := rocketmq.NewProducer(producer.WithNameServer([]string{"192.168.125.13:9876"}), producer.WithRetry(2), producer.WithGroupName("ProducerGroupName"))
 	err := p.Start()
 	if err != nil {
 		fmt.Printf("start producer error: %s\n", err.Error())
@@ -56,7 +56,7 @@ func Producer() {
 }
 
 func Consumer() {
-	c, _ := rocketmq.NewPushConsumer(consumer.WithNameServer([]string{"192.168.32.228:9876"}), consumer.WithConsumerModel(consumer.Clustering), consumer.WithGroupName("ConsumerGroupName"))
+	c, _ := rocketmq.NewPushConsumer(consumer.WithNameServer([]string{"192.168.125.13:9876"}), consumer.WithConsumerModel(consumer.Clustering), consumer.WithGroupName("ConsumerGroupName"))
 	err := c.Subscribe("TEST_FL", consumer.MessageSelector{}, func(ctx context.Context, msgs ...*primitive.MessageExt) (consumer.ConsumeResult, error) {
 		for i := range msgs {
 			fmt.Printf("subscribe callback : %v \n", msgs[i])
