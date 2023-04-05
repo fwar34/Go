@@ -11,8 +11,15 @@
 #  Topic: mytopic  Partition: 1    Leader: 3       Replicas: 3,1,2 Isr: 3,1,2
 #  Topic: mytopic  Partition: 2    Leader: 1       Replicas: 1,2,3 Isr: 1,2,3
 
+# https://www.conduktor.io/kafka/kafka-topics-cli-tutorial/
 # 监听消息
-# /opt/bitnami/kafka/bin/kafka-console-consumer.sh --bootstrap-server kafka-0:9092 --topic my-topic
+# /opt/bitnami/kafka/bin/kafka-console-consumer.sh --bootstrap-server kafka-0:9092 --topic my-topic --group topic-test1
+# 打印 topic 分区和 client 关系
+# /opt/bitnami/kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --all-groups --all-topics --describe
+# 生产消息
+# /opt/bitnami/kafka/bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic my-topic
+# 修改 topic 分组数量
+# /opt/bitnami/kafka/bin/kafka-topics.sh --alter --topic my-topic --partitions 4 --bootstrap-server localhost:9092
 version: "2"
 
 services:
@@ -20,8 +27,8 @@ services:
     container_name: zookeeper
     hostname: zookeeper
     image: docker.io/bitnami/zookeeper:3.8
-    # ports:
-      # - "2181"
+    ports:
+      - "2181:2181"
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
     volumes:
